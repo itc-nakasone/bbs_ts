@@ -1,0 +1,10 @@
+{
+  "watch": [
+    "."
+  ],
+  "ext": "ts",
+  "ignore": [
+    "public/js/*js"
+  ],
+  "exec": "npm start"
+}
