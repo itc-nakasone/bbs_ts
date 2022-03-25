@@ -3,9 +3,36 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
-import {User} from "./models/User.js";
+import {IUser, User} from "./models/User.js";
 import mongoose from "mongoose";
 import {Routes} from "./routes/index.js";
+import type {ICategory} from "./models/Category";
+import type {IThread} from "./models/Thread";
+import type {IMessage} from "./models/Message";
+
+declare module "express-session" {
+    interface SessionData {
+        refUrl: string;
+    }
+}
+
+interface Locals {
+    categories?: Array<ICategory>;
+    category?: ICategory;
+    currentUser?: Express.User | IUser | undefined;
+    loggedIn?: boolean;
+    messages?: Array<IMessage>;
+    redirect?: string;
+    threads?: Array<IThread>;
+    thread?: IThread;
+    skip?: boolean;
+}
+
+declare module "express" {
+    export interface Response {
+        locals: Locals
+    }
+}
 
 const app: Application = express();
 
@@ -28,8 +55,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 app.use((req: Request, res: Response, next: NextFunction) => {
-    res.locals["loggedIn"] = req.isAuthenticated();
-    res.locals["currentUser"] = req.user;
+    res.locals.loggedIn = req.isAuthenticated();
+    res.locals.currentUser = req.user;
     next();
 });
 
