@@ -1,12 +1,15 @@
-import type {Document, Model, Schema} from "mongoose";
+import type {Document, Model} from "mongoose"
 import mongoose from "mongoose";
+type Schema = mongoose.Schema;
+const {model, Schema} = mongoose;
+
 
 export interface ICategory extends Document {
     serial: number;
     name: string;
 }
 
-const schema: Schema = new mongoose.Schema({
+const schema: Schema = new Schema({
     serial: {
         type: Number,
         default: 0,
@@ -18,4 +21,4 @@ const schema: Schema = new mongoose.Schema({
     },
 });
 
-export const Category: Model<ICategory> = mongoose.model<ICategory>("Category", schema);
+export const Category: Model<ICategory> = model<ICategory>("Category", schema);

@@ -1,6 +1,7 @@
 import type {PassportLocalDocument, PassportLocalSchema} from "mongoose";
 import mongoose from "mongoose";
-import passport from "passport-local-mongoose";
+const {model, Schema} = mongoose;
+import passportLocalMongoose from "passport-local-mongoose";
 
 type _User = IUser;
 declare global {
@@ -15,7 +16,7 @@ export interface IUser extends PassportLocalDocument {
     view_name: string;
 }
 
-const schema: PassportLocalSchema = new mongoose.Schema({
+const schema: PassportLocalSchema = new Schema({
     username: {
         type: String,
         required: true,
@@ -29,6 +30,6 @@ const schema: PassportLocalSchema = new mongoose.Schema({
     },
 });
 
-schema.plugin(passport);
+schema.plugin(passportLocalMongoose);
 
-export const User = mongoose.model<IUser>("User", schema);
+export const User = model<IUser>("User", schema);

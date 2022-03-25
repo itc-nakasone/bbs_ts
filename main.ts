@@ -3,9 +3,9 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import passport from "passport";
-import {User} from "./models/User";
+import {User} from "./models/User.js";
 import mongoose from "mongoose";
-import {Routes} from "./routes/index";
+import {Routes} from "./routes/index.js";
 
 const app: Application = express();
 

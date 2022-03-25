@@ -1,6 +1,6 @@
 import {Router} from "express";
-import {homeController} from "../controllers/HomeController";
-import {bbsMiddleware} from "../controllers/BbsMiddleware";
+import {homeController} from "../controllers/HomeController.js";
+import {bbsMiddleware} from "../controllers/BbsMiddleware.js";
 
 
 const router: Router = Router();
