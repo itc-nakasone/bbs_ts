@@ -2,9 +2,9 @@ import type {Document, Model} from "mongoose";
 import mongoose from "mongoose";
 type Schema = mongoose.Schema;
 const {model, Schema, SchemaTypes} = mongoose;
-import type {IUser} from "./User";
-import type {IThread} from "./Thread";
-import {Thread} from "./Thread";
+import type {IUser} from "./User.js";
+import type {IThread} from "./Thread.js";
+import {Thread} from "./Thread.js";
 import dateFormat, {i18n} from "dateformat";
 
 i18n.dayNames = [

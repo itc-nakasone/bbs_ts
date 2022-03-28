@@ -1,7 +1,7 @@
 import type {NextFunction, Request, RequestHandler, Response} from "express";
 import {Category} from "../models/Category.js";
-import {Thread} from "../models/Thread";
-import {Message} from "../models/Message";
+import {Thread} from "../models/Thread.js";
+import {Message} from "../models/Message.js";
 
 const redirect: RequestHandler = (_: Request, res: Response, next: NextFunction) => {
     if (res.locals.redirect != null) {
