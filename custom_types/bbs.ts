@@ -3,13 +3,6 @@ import type {IUser} from "../models/User.js";
 import type {IMessage} from "../models/Message.js";
 import type {IThread} from "../models/Thread.js";
 
-declare global {
-    namespace Express {
-        export interface Request {
-            skip?: boolean | undefined;
-        }
-    }
-}
 declare module "express-session" {
     interface SessionData {
         refUrl?: string | undefined;
@@ -30,6 +23,9 @@ interface Locals {
 }
 
 declare module "express" {
+    export interface Request {
+        skip?: boolean | undefined;
+    }
     export interface Response {
         locals: Locals
     }

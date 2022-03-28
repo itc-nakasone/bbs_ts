@@ -1,6 +1,7 @@
 import passport from "passport";
 import {User} from "../models/User.js";
 import type {NextFunction, Request, RequestHandler, Response} from "express";
+import "../custom_types/bbs.js";
 
 const authenticate: RequestHandler = passport.authenticate("local", {
     successRedirect: "/users/success",
