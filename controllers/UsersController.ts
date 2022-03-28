@@ -36,7 +36,7 @@ const newIndex: RequestHandler = (_: Request, res: Response) => {
 }
 
 const create: RequestHandler = async (req: Request, res: Response, next: NextFunction) => {
-    if (res.locals.skip) return next();
+    if (req.skip) return next();
 
     try {
         const tempUser = new User({

@@ -6,6 +6,7 @@ import passport from "passport";
 import {User} from "./models/User.js";
 import mongoose from "mongoose";
 import {Routes} from "./routes/index.js";
+import "./custom_types/bbs.js";
 
 const app: Application = express();
 

@@ -1,8 +1,15 @@
-import {ICategory} from "../models/Category.js";
-import {IUser} from "../models/User.js";
-import {IMessage} from "../models/Message.js";
-import {IThread} from "../models/Thread.js";
+import type {ICategory} from "../models/Category.js";
+import type {IUser} from "../models/User.js";
+import type {IMessage} from "../models/Message.js";
+import type {IThread} from "../models/Thread.js";
 
+declare global {
+    namespace Express {
+        export interface Request {
+            skip?: boolean | undefined;
+        }
+    }
+}
 declare module "express-session" {
     interface SessionData {
         refUrl?: string | undefined;
